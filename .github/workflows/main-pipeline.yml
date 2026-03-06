@@ -1,0 +1,21 @@
+name: Main Academia Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  # Job 1: Testing the backend
+  test-backend:
+    uses: ./.github/workflows/reusable-test.yml
+    with:
+      service-name: 'backend'
+      node-version: '18'
+
+  # Job 2: Testing the frontend
+  test-frontend:
+    uses: ./.github/workflows/reusable-test.yml
+    with:
+      service-name: 'frontend'
+      node-version: '20'
